@@ -23,7 +23,6 @@ import sys
 import time
 import csv
 import re
-import HTMLParser
 import pdb
 
 ipFile = open("kw.csv", "rb")
