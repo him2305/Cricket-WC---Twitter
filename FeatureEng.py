@@ -1,4 +1,4 @@
-#  CSVsentiment.py
+#  FeatureEng.py
 #  
 #  Copyright 2015[Himanshu Bansal, Natasha A. Thomas]
 #  
