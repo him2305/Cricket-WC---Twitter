@@ -20,7 +20,6 @@
 #  51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
 import csv
-
 def writetoFile(string):
 	#Making Training readable file for Weka
 	fout = open("Original_Set.arff","a")
