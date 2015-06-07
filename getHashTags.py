@@ -1,6 +1,3 @@
-#  This program creates match specific hash-tags.
-# -*- coding: utf-8 -*-
-#
 #  CSVsentiment.py
 #  
 #  Copyright 2015[Himanshu Bansal, Natasha A. Thomas]
