@@ -1,7 +1,3 @@
-#  This program pre-processes the tweets by reading those tweets from getFeatureSet.csv.
-#  Writes features back to feature.txt
-# -*- coding: utf-8 -*-
-#
 #  CSVsentiment.py
 #  
 #  Copyright 2015[Himanshu Bansal, Natasha A. Thomas]
