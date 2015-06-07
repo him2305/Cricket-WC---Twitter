@@ -1,7 +1,4 @@
-#  Program to generate Arff file.
-# -*- coding: utf-8 -*-
-#
-#  CSVsentiment.py
+#  GenerateArff.py
 #  
 #  Copyright 2015[Himanshu Bansal, Natasha A. Thomas]
 #  
