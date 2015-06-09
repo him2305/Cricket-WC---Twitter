@@ -1,3 +1,24 @@
+#  CSVsentiment.py
+#  
+#  Copyright 2015[Himanshu Bansal, Natasha A. Thomas]
+#  
+#  This program is free software; you can redistribute it 
+#  and/or modify it under the terms of the GNU General 
+#  Public License as published by the Free Software 
+#  Foundation; either  version 3 of the License, or 
+#  (at your option) any later version.
+#  
+#  This program is distributed in the hope that it will be 
+#  useful,  but WITHOUT ANY WARRANTY; without  even the 
+#  implied warranty of  MERCHANTABILITY or FITNESS FOR  
+#  A PARTICULAR PURPOSE.  See the  GNU General Public 
+#  License for more details.
+#  
+#  You should have received a copy of the GNU General 
+#  Public License along with this program; if not,
+#  write to the Free Software Foundation, Inc., 
+#  51 Franklin Street, Fifth Floor, Boston,
+#  MA 02110-1301, USA.
 import requests
 import couchdb
 import json 
@@ -20,6 +41,7 @@ class ClientDetails:
 		client = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
 		return client
 
+# Multiple clients created for switching between clients when "rate limiting error" occurs on any client.
 clients = []
 clientDet1 = ClientDetails("2984460830-WCBUxmhV3pliyddNOTRK4gYNcHCdvUjRFGx6mVa", "dGh3xpZ86K4B41oyJdVVnCUWQHT7v2VupsvLiyUuNibHD", "AyNjHZkEuhM8wIzZOIpqrSa99", "0gJDee03DkAXM4O3HLDB3bmHt7xANY3IOyHtML6ipHq8G9TUlo", 1)
 clientDet1.handle = clientDet1.OAuth()
@@ -41,10 +63,11 @@ clientDet6.handle = clientDet6.OAuth()
 clients.append(clientDet6)
 
 
-
+# read tweet id  
 ipFile = open("tweetid.txt", "r")
 c = csv.writer(open("locationdetails.csv", "wb"))
 server = couchdb.Server()
+# create couch database.
 try:
 	db = server.create('topsydata')
 except Exception:
@@ -68,6 +91,7 @@ try:
 			tweet = client.get_status(id=int(line))
 			print "id found"
 			successful = True
+			# Saving missing attributes to database.
 			if 'id' in tweet and 'text' in tweet:
 				try:
 					print "saving"
@@ -114,6 +138,7 @@ try:
 				except Exception:
 					pass
 		except tweepy.TweepError as e:
+			# Switch to available client when rate limiting error occurs on the active client.
 			if 'Rate limit exceeded' in str(e.message):
 				print "Switching user"
 				for eachClient in clients:
